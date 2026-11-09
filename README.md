@@ -63,7 +63,7 @@ The ABCD dialogues are downloaded from the official GitHub release by the notebo
 
 ```
 report/Phase2_Report.pdf          the report (4 pages)
-notebooks/phase2.ipynb            the whole pipeline, with outputs   (phase2_src.py = same code as a script)
+notebooks/phase2.ipynb            the whole pipeline, with outputs
 SCOREBOARD.md                     final scoreboard
 tests/test_questions.csv          30 test cases (v2, used for scoring)
 tests/test_questions_v1_original.csv, build_test_v2.py   v1 and the v1 → v2 changes
@@ -75,14 +75,13 @@ results/grading/                  agreement.json, disagreements.xlsx, final_grad
 results/sft_hand_check_graded.xlsx     60 SFT pairs checked by hand
 results/sft_test_overlap_audit.csv     nearest SFT question for each test question
 results/error_analysis_reviewed.xlsx, error_counts.json   causes of the 19 wrong SFT answers
-results/summary.json, report_numbers.json, cpt_info.json, sft_info.json, corpus_stats.csv
+results/cpt_info.json, sft_info.json, corpus_stats.csv
 figures/                          cpt_loss.png, sft_loss.png, error_causes.png
-tools/                            build_sft_pairs.py, handbook.py, make_notebook.py
+tools/                            build_sft_pairs.py, handbook.py (+ _v1_pairs.py, used by build_sft_pairs.py)
 ```
 
-## Checkpoints and keys
+## Checkpoints
 
 Model checkpoints are not stored in the repository because of their size. Running the notebook reproduces them
 exactly (seed 42; our second full run reproduced every one of the 54 graded answers), and they are available
-from the team on request. No keys are committed; the only secret is `HF_TOKEN` (see `.env.example`), needed only
-to push checkpoints to the Hugging Face Hub.
+from the team on request. No keys are committed.
