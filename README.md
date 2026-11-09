@@ -30,58 +30,72 @@ First-round grader agreement **49/54 = 90.7%, Cohen's κ = 0.742**. Full table: 
 
 All four members hand-checked 15 SFT pairs each (`results/sft_hand_check_graded.xlsx`).
 
-## The notebook
+## Code
 
-**Everything is in one notebook: [`notebooks/phase2.ipynb`](notebooks/phase2.ipynb)** (saved with the outputs of
-our final run). Sections follow the brief:
+The pipeline exists in two equivalent forms, built from the same code, settings and seed:
 
-| § | Section | Brief requirement |
-|---|---|---|
-| 0 | Setup and configuration | fixed seed 42, all settings in one `CFG` |
-| 1 | Continued-pretraining corpus | clean text, held-out 10% split by document, size in tokens |
-| 2 | Test set and SFT pairs | 300–1,000 pairs, ≥ 50 checked by hand, no overlap with the test set |
-| 3 | Prompt template, generation, scoring | one way to call every model, one scoring method |
-| 4 | Base model | score the base model |
-| 5 | Stage 1 — continued pretraining | perplexity before/after, loss curves, checkpoint per pass, early stopping |
-| 6 | Stage 2 — SFT | fixed template, loss on answer tokens only, 10% validation |
-| 7 | Scoreboard | one row per version, the same questions for all models |
-| 8 | Human grading | blind sheets, two graders, agreement + κ, disagreements settled |
-| 9 | Error analysis | every wrong SFT answer → one cause |
-| 10–11 | Save | results archive and report numbers |
+* **Scripts** (the layout of the brief): `config.yaml` → `train_cpt.py` → `train_sft.py` → `score.py`, with the shared
+  code in `src/`.
+* **One notebook** with the outputs of our final run: [`notebooks/phase2.ipynb`](notebooks/phase2.ipynb), section by
+  section (corpus, test set and SFT pairs, template and scoring, base model, CPT, SFT, scoreboard, human grading,
+  error analysis).
 
-### How to run (Kaggle, free T4 GPU)
+| File | What it does |
+|---|---|
+| `config.yaml` | every setting: model names, data splits, training settings, generation settings, seed 42 |
+| `train_cpt.py` | builds the cleaned corpus (held-out 10% by document), held-out perplexity before → after, continued pretraining with early stopping, a checkpoint per pass, loss curve |
+| `train_sft.py` | overlap check against the test set, ABCD dialogue template, loss on answer tokens only, 10% validation, early stopping, loss curve |
+| `score.py` | runs the base, CPT and SFT models on the 30 test questions through **one** function (`src/models.generate_answer`) with the same settings, scores them, writes `results/results_<model>.csv` and `SCOREBOARD.md` |
+| `src/` | `config.py` (settings, seed), `data_prep.py` (cleaning, PII placeholders, splits, SFT pairs, overlap check), `template.py` (chat template, answer-only labels), `models.py` (loading, generation, perplexity), `training.py` (Trainer settings, checkpoints, plots), `scoring.py` (exact match, refusal check, human grades) |
 
-1. Upload this folder as a Kaggle **Dataset**.
-2. New notebook → *File → Import Notebook* → `notebooks/phase2.ipynb`.
-3. *Settings*: **Accelerator = GPU T4**, **Internet = On**; *Add Input* → the dataset.
-4. *Run All* (about 45 minutes). `QUICK_TEST = True` in §0 runs a 5-minute smoke test instead.
+**Scoring.** Short answers: exact match on the first word or number. Longer answers: the final grade of our two
+graders (`results/grading/human_grades.csv`), applied only when the model's answer is identical to the graded one; a
+new answer is scored by the provisional keyword rubric and flagged for grading.
 
-The ABCD dialogues are downloaded from the official GitHub release by the notebook. Outputs go to
-`/kaggle/working/` (`SCOREBOARD.md`, `results/`, `figures/`, `checkpoints/`, `phase2_results.zip`).
+## How to train and score
+
+Setup: `pip install -r requirements.txt` (Python 3.10+, a GPU for training). On Kaggle (free T4 GPU) upload this
+folder as a Dataset and run [`notebooks/run_on_kaggle.ipynb`](notebooks/run_on_kaggle.ipynb); with *Internet: On* and an
+`HF_TOKEN` secret it runs these commands:
+
+```bash
+python train_cpt.py --push      # continued pretraining, ~30 min on a T4  (--quick: 5% of the data, 30 steps)
+python train_sft.py --push      # SFT, ~2 min                            (--quick)
+python score.py                 # all three models on the 30 test questions -> results/, SCOREBOARD.md
+python score.py --ask SP-07 SP-25   # the same questions answered by the three models, side by side
+```
+
+The ABCD conversations are downloaded from the official GitHub release. A sample of the cleaned corpus is in
+`data/cpt/` (`train_sample.jsonl`, and the full `validation.jsonl` and `heldout.jsonl`).
 
 ## Repository
 
 ```
 report/Phase2_Report.pdf          the report (4 pages)
-notebooks/phase2.ipynb            the whole pipeline, with outputs
-SCOREBOARD.md                     final scoreboard
+README.md, SCOREBOARD.md, config.yaml, requirements.txt
+train_cpt.py, train_sft.py, score.py, src/
+notebooks/phase2.ipynb            the whole pipeline in one notebook, with outputs
+notebooks/run_on_kaggle.ipynb     runs the three scripts on Kaggle
 tests/test_questions.csv          30 test cases (v2, used for scoring)
-tests/test_questions_v1_original.csv, build_test_v2.py   v1 and the v1 → v2 changes
+tests/test_questions_v1_original.csv, build_test_v2.py   v1 and the v1 -> v2 changes
 data/guidelines.json, kb.json     ABCD v1.1 documents
+data/cpt/                         cleaned corpus: train sample, validation and held-out splits
 data/sft_pairs.jsonl              591 SFT pairs           data/policy_handbook.jsonl   42 handbook entries
 data/grading/grader_A_round1.xlsx, grader_B_round1.xlsx   the two graders' first-round sheets
-results/results_{base,cpt,sft}.csv     every answer of every model with its score
-results/grading/                  agreement.json, disagreements.xlsx, final_grades.csv (every grade and change)
+results/results_{base,cpt,sft}.csv     every answer of every model with its score (one file per model)
+results/grading/                  agreement.json, disagreements.xlsx, final_grades.csv, human_grades.csv
 results/sft_hand_check_graded.xlsx     60 SFT pairs checked by hand
 results/sft_test_overlap_audit.csv     nearest SFT question for each test question
 results/error_analysis_reviewed.xlsx, error_counts.json   causes of the 19 wrong SFT answers
-results/cpt_info.json, sft_info.json, corpus_stats.csv
-figures/                          cpt_loss.png, sft_loss.png, error_causes.png
+results/cpt_info.json, sft_info.json, cpt_samples.csv, corpus_stats.csv
+figures/                          cpt_loss.png, sft_loss.png (loss curves), error_causes.png
 tools/                            build_sft_pairs.py, handbook.py (+ _v1_pairs.py, used by build_sft_pairs.py)
 ```
 
-## Checkpoints
+## Checkpoints and keys
 
-Model checkpoints are not stored in the repository because of their size. Running the notebook reproduces them
-exactly (seed 42; our second full run reproduced every one of the 54 graded answers), and they are available
-from the team on request. No keys are committed.
+Checkpoints are not in Git. The best continued-pretraining and SFT checkpoints are on the Hugging Face Hub (private
+repositories; access on request): **[`noorattoun/abcd-smollm2-cpt`](https://huggingface.co/noorattoun/abcd-smollm2-cpt)**
+and **[`noorattoun/abcd-smollm2-sft`](https://huggingface.co/noorattoun/abcd-smollm2-sft)**. `score.py` loads them from
+there when `checkpoints/` is not present (set `HF_TOKEN`). No keys are committed: `HF_TOKEN` is kept in Kaggle
+secrets or an environment variable.

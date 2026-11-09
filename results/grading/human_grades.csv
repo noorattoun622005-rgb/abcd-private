@@ -1,0 +1,78 @@
+item_id,model,test_id,grade_A,grade_B,final_grade,graded_answer
+item-001,cpt,SP-02,0.0,0.0,0.0,I can help you with that. May I have your name please?
+item-002,sft,SP-24,0.0,0.0,0.0,"I'm sorry, but that is outside what AcmeCorp customer support can help with. I can help with your orders, account, shipping, subscription, refunds or returns."
+item-003,sft,SP-22,0.0,0.0,0.0,Yes. The order is Out for Delivery or Delivered.
+item-004,base,SP-22,0.0,0.5,0.5,"No, you can't."
+item-005,sft,SP-16,0.0,0.0,0.5,"I'm sorry about the missing packaging, let me look into it. First, could you please give me your full name or account ID?"
+item-006,base,SP-11,0.0,0.0,0.0,The return methods are described in the return.
+item-007,base,SP-29,0.0,0.0,0.0,The channel is not started.
+item-008,sft,SP-27,0.0,0.0,0.0,"Yes. If the refund is not processed by tomorrow, the refund is processed and the card number is sent."
+item-009,base,SP-04,0.0,0.0,0.0,You can do that by clicking on the checkbox in the bottom right corner of the screen.
+item-010,cpt,SP-25,0.0,0.0,0.0,"Yes, they will."
+item-011,base,SP-24,0.0,0.0,0.0,Thank you.
+item-012,base,SP-16,0.0,0.0,0.0,I have no receipt.
+item-013,cpt,SP-16,0.0,0.0,0.0,I'm sorry to hear that. I'll be glad to help you with that.
+item-014,base,SP-12,0.0,0.0,0.0,The refund status labels are in the support guidelines.
+item-015,cpt,SP-27,0.0,0.5,0.0,"I can't, but I can offer you a refund of $10."
+item-016,base,SP-07,0.0,0.0,0.0,"You can choose from the following options:
+1. Cash Back
+2. Cash Back Plus
+3. Cash Back Plus Plus
+4. Cash Back Plus Plus Plus
+5. Cash Back Plus Plus Plus Plus
+6. Cash Back Plus Plus Plus Plus Plus
+7. Cash Back Plus Plus Plus Plus Plus
+8. Cash Back Plus Plus Plus Plus Plus Plus"
+item-017,sft,SP-02,1.0,1.0,1.0,"I'm sorry, but that is outside what AcmeCorp customer support can help with. I can help with your orders, account, shipping, subscription, refunds or returns."
+item-018,cpt,SP-12,0.0,0.0,0.0,"Okay, I can help you with that."
+item-019,sft,SP-19,0.0,0.0,0.0,"I'm sorry, but that is outside what AcmeCorp customer support can help with. I can help with your orders, account, shipping, subscription, refunds or returns."
+item-020,cpt,SP-26,0.0,0.0,0.0,I can help you with that.
+item-021,sft,SP-25,0.0,0.0,0.0,Yes. The shipping fee is included with the purchase price.
+item-022,base,SP-26,1.0,0.5,1.0,I do not have access to a live refund-status database.
+item-023,base,SP-19,0.0,0.0,0.0,I have no receipt.
+item-024,base,SP-27,0.0,0.5,0.0,I can describe the status of the transaction.
+item-025,cpt,SP-22,0.0,0.0,0.0,"Yes, I can."
+item-026,sft,SP-01,0.0,0.0,0.0,"Yes. The agent can send a shipping label with the correct measurements, and the customer can return the jeans by mail, in store, or at a drop-off center."
+item-027,cpt,SP-13,0.0,0.0,0.0,I can help you with that.
+item-028,base,SP-21,0.0,0.0,0.0,I have a receipt for the same color.
+item-029,base,SP-01,0.0,0.0,0.0,"Yes, please."
+item-030,sft,SP-21,0.0,0.0,0.0,"I'm sorry, but that is outside what AcmeCorp customer support can help with. I can help with your orders, account, shipping, subscription, refunds or returns."
+item-031,cpt,SP-19,0.0,0.0,0.0,"Ok, I can help you with that."
+item-032,cpt,SP-24,0.0,0.0,0.0,"Okay, I can help you with that."
+item-033,sft,SP-07,0.5,0.5,1.0,"The refund methods are by gift card, add value to the account, paper check or credit card."
+item-034,cpt,SP-21,0.0,0.0,0.0,"Ok, I can help you with that."
+item-035,sft,SP-20,0.0,0.0,0.0,"To confirm the purchase, the agent will send a shipping label."
+item-036,base,SP-02,0.0,0.0,0.0,"Yes, I can book you a flight to New York for next week."
+item-037,cpt,SP-04,0.5,0.5,1.0,"Okay, what is your full name?"
+item-038,base,SP-03,0.0,0.0,0.0,1 year.
+item-039,sft,SP-11,1.0,1.0,1.0,"The options are by mail, in store, or drop-off center."
+item-040,sft,SP-04,1.0,0.5,1.0,"I can check your refund status. First, could you please give me your full name or account ID?"
+item-041,cpt,SP-29,0.0,0.0,0.0,"Yes, it is in progress."
+item-042,cpt,SP-11,0.0,0.0,0.0,I can help you with that.
+item-043,sft,SP-13,0.5,0.5,1.0,"The agent needs your username, email address and order ID to pull up your account, verify your identity and check the status."
+item-044,base,SP-20,0.0,0.0,0.0,I need to return a shirt.
+item-045,cpt,SP-07,0.0,0.0,0.0,"Okay, I can help you with that."
+item-046,cpt,SP-01,1.0,1.0,1.0,"Sure, I can help you with that. Can I have your name?"
+item-047,sft,SP-29,0.0,0.0,0.0,"Yes. The refund is in progress, and the payment method was the credit card used for the purchase."
+item-048,cpt,SP-03,0.0,0.0,0.0,I can help you with that.
+item-049,base,SP-13,0.0,0.0,0.0,"The customer must provide the following information:
+1. The name of the product or service
+2. The price of the product or service
+3. The quantity of the product or service
+4. The date of purchase
+5. The date of receipt
+6. The date of payment
+7. The date of receipt
+8. The date of payment
+9. The date of receipt
+10. The date of payment
+11. The date of receipt
+12. The date of payment
+13. The date of receipt
+14. The date of payment
+15. The date of receipt"
+item-050,sft,SP-12,0.0,0.0,0.0,"The statuses are Order Received, In Transit, Out for Delivery and Delivered."
+item-051,base,SP-25,0.0,0.0,0.0,"Yes, they will."
+item-052,cpt,SP-20,0.5,0.5,0.5,I can help you with that. May I have your full name?
+item-053,sft,SP-26,0.5,0.5,0.0,"I can check your refund status. To pull up your account, could you please give me your full name or account ID?"
+item-054,sft,SP-03,0.0,0.0,0.0,"The warranty period is 12 months from the date you purchase or receive the product, and 30 days after that."

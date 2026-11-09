@@ -1,0 +1,54 @@
+# All settings of Phase 2 in one place (read by train_cpt.py, train_sft.py and score.py).
+seed: 42
+base_model: HuggingFaceTB/SmolLM2-135M      # allowed by the brief
+
+# Where the trained models are. Local folders are used if they exist, otherwise the Hugging Face Hub repos.
+# hub_user is filled in once the checkpoints are pushed (python train_cpt.py --push / train_sft.py --push).
+hub_user: noorattoun
+models:
+  base: HuggingFaceTB/SmolLM2-135M
+  cpt:  {local: checkpoints/cpt/best, hub: abcd-smollm2-cpt}
+  sft:  {local: checkpoints/sft/best, hub: abcd-smollm2-sft}
+
+paths:
+  guidelines: data/guidelines.json
+  kb: data/kb.json
+  handbook: data/policy_handbook.jsonl
+  sft_pairs: data/sft_pairs.jsonl
+  tests: tests/test_questions.csv
+  human_grades: results/grading/human_grades.csv
+  abcd_url: https://raw.githubusercontent.com/asappresearch/abcd/master/data/abcd_v1.1.json.gz
+  work: .                                   # outputs: checkpoints/, results/, figures/, data/cpt/
+
+data:
+  heldout_frac: 0.10        # held-out documents, perplexity only (never trained on)
+  val_frac: 0.05            # validation documents, loss curve + early stopping
+  policy_upsample: 5        # guideline + handbook documents repeated in TRAIN only
+  max_dialogues: null       # null = all 10,042 ABCD conversations
+
+cpt:
+  block_size: 512
+  epochs: 3
+  lr: 1.0e-4
+  batch_size: 8
+  grad_accum: 2
+  warmup_ratio: 0.05
+  weight_decay: 0.01
+  eval_steps: 50
+  patience: 3
+
+sft:
+  epochs: 4
+  lr: 5.0e-5
+  batch_size: 8
+  grad_accum: 1
+  max_len: 512
+  warmup_ratio: 0.05
+  weight_decay: 0.0
+  eval_steps: 10
+  patience: 4
+  val_frac: 0.10
+
+gen:                         # identical for every model: greedy decoding
+  max_new_tokens: 128
+  repetition_penalty: 1.0

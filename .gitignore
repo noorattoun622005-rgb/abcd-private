@@ -4,3 +4,6 @@ work/
 .env
 __pycache__/
 .ipynb_checkpoints/
+data/raw/
+data/cpt/train.jsonl
+data/abcd_v1.1.json.gz
