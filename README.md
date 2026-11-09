@@ -72,7 +72,7 @@ The ABCD conversations are downloaded from the official GitHub release. A sample
 
 ```
 report/Phase2_Report.pdf          the report (4 pages)
-README.md, SCOREBOARD.md, config.yaml, requirements.txt
+README.md, SCOREBOARD.md, config.yaml, requirements.txt, .env.example
 train_cpt.py, train_sft.py, score.py, src/
 notebooks/phase2.ipynb            the whole pipeline in one notebook, with outputs
 notebooks/run_on_kaggle.ipynb     runs the three scripts on Kaggle
@@ -97,5 +97,5 @@ tools/                            build_sft_pairs.py, handbook.py (+ _v1_pairs.p
 Checkpoints are not in Git. The best continued-pretraining and SFT checkpoints are on the Hugging Face Hub (private
 repositories; access on request): **[`noorattoun/abcd-smollm2-cpt`](https://huggingface.co/noorattoun/abcd-smollm2-cpt)**
 and **[`noorattoun/abcd-smollm2-sft`](https://huggingface.co/noorattoun/abcd-smollm2-sft)**. `score.py` loads them from
-there when `checkpoints/` is not present (set `HF_TOKEN`). No keys are committed: `HF_TOKEN` is kept in Kaggle
-secrets or an environment variable.
+there when `checkpoints/` is not present (set `HF_TOKEN`). No keys are committed: the only secret is `HF_TOKEN`
+(see `.env.example`), kept in Kaggle secrets or an environment variable.
