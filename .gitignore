@@ -1,0 +1,6 @@
+checkpoints/
+work/
+*.safetensors
+.env
+__pycache__/
+.ipynb_checkpoints/

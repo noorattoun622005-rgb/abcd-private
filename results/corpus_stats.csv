@@ -1,0 +1,5 @@
+split,documents,tokens
+train (unique documents),8628,2565680
+train (policy docs x5),8996,2658960
+validation (early stopping),502,150862
+held-out 10% (perplexity),1010,302157

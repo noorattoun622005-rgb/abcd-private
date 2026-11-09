@@ -1,0 +1,4 @@
+model,automatic,human-graded (official)
+"Small model, base",28.3%,31.7%
++ continued pretraining,5.0%,8.3%
++ SFT,40.0%,38.3%

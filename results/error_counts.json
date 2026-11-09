@@ -1,0 +1,12 @@
+{
+  "failures": 19,
+  "counts": {
+    "refusal_error": 9,
+    "hallucination": 5,
+    "knowledge_missing": 5,
+    "format_failure": 0,
+    "test_case_problem": 0
+  },
+  "reviewed_by_hand": true,
+  "source": "results/error_analysis_reviewed.xlsx"
+}

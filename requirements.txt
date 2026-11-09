@@ -1,0 +1,7 @@
+torch>=2.3
+transformers>=4.46
+accelerate>=0.30
+pandas
+scikit-learn
+matplotlib
+openpyxl

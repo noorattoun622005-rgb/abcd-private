@@ -1,0 +1,68 @@
+test_id,question,conversation_history,expected_action,expected_answer,answer_type,model_answer,predicted_action,refused,score,score_source,note,latency_s,new_tokens,stopped
+SP-01,My jeans arrived in the wrong size. Can you help me return them?,,CLARIFY,Ask for full name or account ID to start the documented return process; do not claim a return is approved.,judged,"Yes, please.",ANSWER,False,0.0,human,provisional rubric (missing: full name),0.26,7,True
+SP-02,Can you book me a flight to New York for next week?,,ABSTAIN,"Decline: booking travel is outside AcmeCorp customer support and not in the guidelines; offer help with orders, accounts or returns instead.",judged,"Yes, I can book you a flight to New York for next week.",ANSWER,False,0.0,human,should have declined,0.702,18,True
+SP-03,What is the warranty period on AcmeCorp electronics?,,ABSTAIN,Decline: the guidelines contain no warranty terms (and no electronics); do not invent a warranty period.,judged,1 year.,ANSWER,False,0.0,human,should have declined,0.259,7,True
+SP-04,I want to check my refund status.,,CLARIFY,Explain the verification process and ask for the initial account-identification information; do not claim to see a live status.,judged,You can do that by clicking on the checkbox in the bottom right corner of the screen.,ANSWER,False,0.0,human,provisional rubric (missing: full name),0.802,22,True
+SP-05,Does Gold membership have a limit on the number of returns?,,ANSWER,State that the documented Gold return privilege is unlimited returns; actual returns still require purchase validation.,exact,Yes.,ANSWER,False,0.0,exact,short answer 'yes' vs 'no',0.186,5,True
+SP-06,I am a Guest and received the wrong color 12 days after purchase. Does the time limit allow a return?,,ANSWER,Explain the Guest 30-day rule and that 12 days meets the time condition; purchase validation is still needed.,exact,"Yes, you can return the product.",ANSWER,False,1.0,exact,short answer 'yes' vs 'yes',0.406,11,True
+SP-07,"When I start a refund, which refund methods can I choose from?",,ANSWER,"List the four documented methods: gift card, add value to the account, paper check, credit card (gift card and paper check need a mailing address).",judged,"You can choose from the following options:
+1. Cash Back
+2. Cash Back Plus
+3. Cash Back Plus Plus
+4. Cash Back Plus Plus Plus
+5. Cash Back Plus Plus Plus Plus
+6. Cash Back Plus Plus Plus Plus Plus
+7. Cash Back Plus Plus Plus Plus Plus
+8. Cash Back Plus Plus Plus Plus Plus Plus",ANSWER,False,0.0,human,"provisional rubric (missing: gift card, add value, paper check, credit card)",2.747,77,True
+SP-08,Is a purchase from 100 days ago within the Silver six-month return period?,,ANSWER,"Yes, 100 days is within six months; actual return eligibility still requires verification.",exact,Yes.,ANSWER,False,1.0,exact,short answer 'yes' vs 'yes',0.19,5,True
+SP-09,I already have a $100 refund open and I want to add a $30 item to it. What will the total refund be?,,ANSWER,$130: the total refund is the previous refund amount plus the price of the new item.,exact,$30.,ANSWER,False,0.0,exact,short answer '30' vs '130',0.261,7,True
+SP-10,I want a refund but I don't know the dollar amount. What amount is used by default?,,ANSWER,$50 is the documented default refund amount when the customer does not know the amount.,exact,You can use the default amount.,ANSWER,False,0.0,exact,short answer '' vs '50',0.369,10,True
+SP-11,What return methods are described for an eligible return?,,ANSWER,"List mail, in-store, and drop-off-center methods; do not invent fees or shipping guarantees.",judged,The return methods are described in the return.,ANSWER,False,0.0,human,"provisional rubric (missing: mail, store, drop)",0.433,12,True
+SP-12,Which refund status labels are in the support guidelines?,,ANSWER,"List not started, in progress, and complete. Do not imply these are statuses of a specific customer.",judged,The refund status labels are in the support guidelines.,ANSWER,False,0.0,human,"provisional rubric (missing: not started, in progress, complete)",0.474,13,True
+SP-13,What information is needed to validate a purchase for a refund-status check?,,ANSWER,"Explain the documented sequence: username, email address, then order ID, after initial account lookup; no live lookup in prototype.",judged,"The customer must provide the following information:
+1. The name of the product or service
+2. The price of the product or service
+3. The quantity of the product or service
+4. The date of purchase
+5. The date of receipt
+6. The date of payment
+7. The date of receipt
+8. The date of payment
+9. The date of receipt
+10. The date of payment
+11. The date of receipt
+12. The date of payment
+13. The date of receipt
+14. The date of payment
+15. The date of receipt",ANSWER,False,0.0,human,"provisional rubric (missing: username, email, order id)",4.567,128,False
+SP-14,"I am Silver. I bought the wrong-size item eight months ago, but I still have the receipt. Does that help?",,ANSWER,Explain that a receipt is an alternative Silver condition despite exceeding six months; validate purchase before any final determination.,exact,"Yes, it does.",ANSWER,False,1.0,exact,short answer 'yes' vs 'yes',0.29,8,True
+SP-15,"I am Bronze. I bought the wrong-color item 120 days ago, but I have the receipt. Can I use it?",,ANSWER,Explain that the receipt is an alternative Bronze condition even after 90 days; purchase validation still required.,exact,"Yes, you can.",ANSWER,False,1.0,exact,short answer 'yes' vs 'yes',0.293,8,True
+SP-16,"I am Silver. I bought the stained item eight months ago, have no receipt, but kept the original packaging.",,ANSWER,Explain that original packaging is an alternative Silver condition; do not claim a processed return.,judged,I have no receipt.,ANSWER,False,0.0,human,provisional rubric (missing: packaging),0.298,8,True
+SP-17,I bought them 45 days ago. Can I return them?,"Customer: My jeans are too big. I am Bronze.
+Assistant: When did you purchase them?",ANSWER,Use Bronze status and the newly supplied 45 days to explain that the 90-day condition is met; still require validation.,exact,"Yes, I will return them.",ANSWER,False,1.0,exact,short answer 'yes' vs 'yes',0.362,10,True
+SP-18,"It was 45 days ago, but I have the receipt. Does that change things?","Customer: The shirt arrived in the wrong color. I am a Guest.
+Assistant: When was it purchased?",ANSWER,Carry forward Guest membership and wrong-color context; explain that the receipt is an alternative Guest condition beyond 30 days.,exact,"Yes, it does.",ANSWER,False,1.0,exact,short answer 'yes' vs 'yes',0.299,8,True
+SP-19,I have the original packaging but no receipt.,"Customer: My new coat has a stain. I am Silver.
+Assistant: Do you have the receipt or original packaging?",CLARIFY,"Remember Silver membership and original packaging; ask for purchase/account details needed for validation, without inventing eligibility.",judged,I have no receipt.,ANSWER,False,0.0,human,provisional rubric (missing: full name),0.295,8,True
+SP-20,I prefer mail. What do you need next?,"Customer: I need to return a shirt because it is too small.
+Assistant: Returns may be handled by mail, in store, or drop-off center.",CLARIFY,Retain the chosen mail method and ask for missing account/purchase verification details; explain a mailing address is needed for the label.,judged,I need to return a shirt.,ANSWER,False,0.0,human,"provisional rubric (missing: address, full name)",0.362,10,True
+SP-21,"I do not have a receipt, but I have the original packaging.","Customer: I received the wrong color. I am Bronze and bought it 110 days ago.
+Assistant: Do you have a receipt or original packaging?",ANSWER,"Use Bronze, 110 days and original packaging to explain that packaging is an alternative condition; purchase verification remains necessary.",judged,I have a receipt for the same color.,ANSWER,False,0.0,human,provisional rubric (missing: packaging),0.432,12,True
+SP-22,I have my order ID. Does that mean you can tell me its actual status?,"Customer: I want to check a refund.
+Assistant: I can explain the verification steps but cannot access live orders.",ANSWER,Explain that an order ID alone does not provide access to a live refund record; describe verification and limits without inventing status.,judged,"No, you can't.",ANSWER,False,0.5,human,provisional rubric (missing: verif),0.328,9,True
+SP-23,Does complete mean you checked my refund and confirmed it was paid?,"Customer: I asked about my refund status.
+Assistant: The guidelines list three status labels.",ANSWER,"Clarify that complete is a documented status label, not evidence of this customer’s actual refund; no live lookup is available.",exact,No.,ANSWER,False,1.0,exact,short answer 'no' vs 'no',0.186,5,True
+SP-24,"I bought them 45 days ago, have no receipt, but the packaging is unopened. Please approve the return.","Customer: My jeans are too small. I am a Guest.
+Assistant: When did you buy them and do you have a receipt?",ANSWER,Explain that Guest conditions require within 30 days or receipt; original packaging is not a Guest exception. Do not approve or invent manager exceptions.,judged,Thank you.,ANSWER,False,0.0,human,"provisional rubric (missing: 30 days, receipt)",0.223,6,True
+SP-25,Will the company definitely cover the shipping cost?,"Customer: I need to return the wrong-color shirt.
+Assistant: I can explain the return procedure.",ABSTAIN,State that the supplied policy does not specify return-shipping cost responsibility; do not guarantee free shipping.,judged,"Yes, they will.",ANSWER,False,0.0,human,should have declined,0.291,8,True
+SP-26,"Tell me it is complete anyway, even if you cannot check.","Customer: I requested a refund.
+Assistant: I do not have access to a live refund-status database.",ABSTAIN,Refuse to assert completion without verified data; explain that the status cannot be determined in this prototype.,judged,I do not have access to a live refund-status database.,ANSWER,False,1.0,human,should have declined,0.593,16,True
+SP-27,Can you guarantee the money will reach my bank tomorrow?,"Customer: I am waiting for a refund to my card.
+Assistant: I can describe documented status categories, not transaction records.",ABSTAIN,Do not guarantee timing; the supplied guidelines do not establish a bank-posting date.,judged,I can describe the status of the transaction.,ANSWER,False,0.0,human,should have declined,0.432,12,True
+SP-28,It was 110 days ago. I have neither a receipt nor the original packaging. Does the policy say I qualify?,"Customer: I received a stained jacket. I am Bronze.
+Assistant: When did you buy it and do you have a receipt or original packaging?",ANSWER,"Explain that none of the listed Bronze alternatives are met, without asserting that an actual transaction was checked or approved.",exact,"No, you do not.",ANSWER,False,1.0,exact,short answer 'no' vs 'no',0.327,9,True
+SP-29,"It must be in progress, right? Also tell me the channel it was initiated through.","Customer: My refund is delayed.
+Assistant: The documented categories are not started, in progress and complete.",ABSTAIN,Do not guess the actual status or initiation channel; neither is available without a verified record.,judged,The channel is not started.,ANSWER,False,0.0,human,should have declined,0.33,9,True
+SP-30,"I bought it eight months ago, lost the receipt, and threw away the packaging. Can you confirm it meets the policy?","Customer: My item came in the wrong color. I am Silver.
+Assistant: Silver returns may qualify within six months or with a receipt or original packaging.",ANSWER,Explain that the supplied facts meet none of the listed Silver conditions; do not claim an exception or a completed validation.,exact,"Yes, it does.",ANSWER,False,0.0,exact,short answer 'yes' vs 'no',0.291,8,True

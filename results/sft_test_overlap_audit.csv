@@ -1,0 +1,31 @@
+test_id,test_question,nearest_sft_question,cosine
+SP-12,Which refund status labels are in the support guidelines?,Summarize the AcmeCorp support guideline for: Refund Status.,0.543
+SP-04,I want to check my refund status.,What does a subscription status check show?,0.518
+SP-25,Will the company definitely cover the shipping cost?,Will the price definitely drop again next week?,0.437
+SP-10,I want a refund but I don't know the dollar amount. What amount is used by default?,"If my account credit is missing and I don't know the amount, how much do you add back?",0.426
+SP-27,Can you guarantee the money will reach my bank tomorrow?,Can you guarantee the website will be fixed today?,0.407
+SP-13,What information is needed to validate a purchase for a refund-status check?,"If you place the order for me, what information do you need?",0.396
+SP-09,I already have a $100 refund open and I want to add a $30 item to it. What will the total refund be?,How does AcmeCorp handle this case: Update Refund (add an item to an existing refund)?,0.389
+SP-05,Does Gold membership have a limit on the number of returns?,How long does a membership last?,0.37
+SP-07,"When I start a refund, which refund methods can I choose from?",Which payment methods can I have on my account?,0.361
+SP-01,My jeans arrived in the wrong size. Can you help me return them?,"How does AcmeCorp handle this case: Returns (stained item, wrong color or wrong size)?",0.355
+SP-15,"I am Bronze. I bought the wrong-color item 120 days ago, but I have the receipt. Can I use it?",I'm Bronze.,0.353
+SP-06,I am a Guest and received the wrong color 12 days after purchase. Does the time limit allow a return?,"How does AcmeCorp handle this case: Returns (stained item, wrong color or wrong size)?",0.329
+SP-08,Is a purchase from 100 days ago within the Silver six-month return period?,My promo code was issued 2 days ago. Is it still within the usual promotion period?,0.326
+SP-22,I have my order ID. Does that mean you can tell me its actual status?,My order status is Order Received. Can you waive the whole shipping fee?,0.284
+SP-18,"It was 45 days ago, but I have the receipt. Does that change things?",My order was received but not shipped. Can I still change the payment method?,0.282
+SP-11,What return methods are described for an eligible return?,What are the valid payment methods?,0.28
+SP-14,"I am Silver. I bought the wrong-size item eight months ago, but I still have the receipt. Does that help?",I'm Silver.,0.272
+SP-02,Can you book me a flight to New York for next week?,Can I delay my delivery to next week if it hasn't shipped yet?,0.26
+SP-29,"It must be in progress, right? Also tell me the channel it was initiated through.",How does AcmeCorp handle this case: Initiate Refund?,0.25
+SP-23,Does complete mean you checked my refund and confirmed it was paid?,"Confirm my address change went through, you don't need to check.",0.246
+SP-20,I prefer mail. What do you need next?,What do I need to get a new password?,0.246
+SP-26,"Tell me it is complete anyway, even if you cannot check.",What can you tell me about my subscription after checking it?,0.234
+SP-28,It was 110 days ago. I have neither a receipt nor the original packaging. Does the policy say I qualify?,Does my shopping cart qualify for free shipping?,0.231
+SP-03,What is the warranty period on AcmeCorp electronics?,Can you pay my electricity bill?,0.229
+SP-21,"I do not have a receipt, but I have the original packaging.",How many days do I have to report a damaged package?,0.229
+SP-24,"I bought them 45 days ago, have no receipt, but the packaging is unopened. Please approve the return.",Please send a package for me with FedEx.,0.221
+SP-16,"I am Silver. I bought the stained item eight months ago, have no receipt, but kept the original packaging.",I'm Silver.,0.219
+SP-30,"I bought it eight months ago, lost the receipt, and threw away the packaging. Can you confirm it meets the policy?","My subscription has to be active, right? Just confirm it.",0.207
+SP-17,I bought them 45 days ago. Can I return them?,The item I bought was cheaper yesterday.,0.204
+SP-19,I have the original packaging but no receipt.,"No, it's still at Order Received.",0.184

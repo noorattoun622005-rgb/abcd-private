@@ -1,0 +1,80 @@
+{
+  "config": {
+    "seed": 42,
+    "base_model": "HuggingFaceTB/SmolLM2-135M",
+    "data": {
+      "heldout_frac": 0.1,
+      "val_frac": 0.05,
+      "policy_upsample": 5,
+      "max_dialogues": null
+    },
+    "cpt": {
+      "block_size": 512,
+      "epochs": 3,
+      "lr": 0.0001,
+      "batch_size": 8,
+      "grad_accum": 2,
+      "warmup_ratio": 0.05,
+      "weight_decay": 0.01,
+      "eval_steps": 50,
+      "patience": 3
+    },
+    "sft": {
+      "epochs": 4,
+      "lr": 5e-05,
+      "batch_size": 8,
+      "grad_accum": 1,
+      "max_len": 512,
+      "warmup_ratio": 0.05,
+      "weight_decay": 0.0,
+      "eval_steps": 10,
+      "patience": 4,
+      "val_frac": 0.1
+    },
+    "gen": {
+      "max_new_tokens": 128,
+      "repetition_penalty": 1.0
+    }
+  },
+  "corpus": [
+    {
+      "split": "train (unique documents)",
+      "documents": 8628,
+      "tokens": 2565680
+    },
+    {
+      "split": "train (policy docs x5)",
+      "documents": 8996,
+      "tokens": 2658960
+    },
+    {
+      "split": "validation (early stopping)",
+      "documents": 502,
+      "tokens": 150862
+    },
+    {
+      "split": "held-out 10% (perplexity)",
+      "documents": 1010,
+      "tokens": 302157
+    }
+  ],
+  "perplexity": {
+    "base": 14.92539304467791,
+    "cpt": 3.2822414312797297,
+    "sft": 4.519489277622565
+  },
+  "cpt": {
+    "passes": 3.0,
+    "best_val_loss": 1.181400179862976,
+    "best_step": 975,
+    "minutes": 27.903042562802632
+  },
+  "sft": {
+    "passes": 2.5373134328358207,
+    "best_val_loss": 0.71206134557724,
+    "minutes": 1.8489633560180665,
+    "pairs": 591,
+    "train": 533,
+    "val": 58
+  }
+}

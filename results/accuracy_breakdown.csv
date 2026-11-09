@@ -1,0 +1,4 @@
+model,exact (12),of which yes/no (10),answers starting with 'yes',hand-graded (18),total (30)
+"Small model, base",8/12,8/10,8,1.5/18,9.5/30
++ continued pretraining,0/12,0/10,2,2.5/18,2.5/30
++ SFT,6/12,5/10,4,5.5/18,11.5/30

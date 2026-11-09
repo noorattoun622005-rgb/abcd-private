@@ -1,0 +1,32 @@
+{
+  "base": {
+    "accuracy": 0.31666666666666665,
+    "refusal_accuracy": 0.16666666666666666,
+    "over_refusal": 0.0,
+    "stopped_cleanly": 0.9666666666666667,
+    "latency_s": 0.5762666666666667,
+    "human_graded": 18,
+    "provisional": 0,
+    "perplexity": 14.92539304467791
+  },
+  "cpt": {
+    "accuracy": 0.08333333333333333,
+    "refusal_accuracy": 0.0,
+    "over_refusal": 0.0,
+    "stopped_cleanly": 1.0,
+    "latency_s": 0.6281666666666667,
+    "human_graded": 18,
+    "provisional": 0,
+    "perplexity": 3.2822414312797297
+  },
+  "sft": {
+    "accuracy": 0.38333333333333336,
+    "refusal_accuracy": 0.16666666666666666,
+    "over_refusal": 0.16666666666666666,
+    "stopped_cleanly": 1.0,
+    "latency_s": 1.1102999999999998,
+    "human_graded": 18,
+    "provisional": 0,
+    "perplexity": 4.519489277622565
+  }
+}
