@@ -75,7 +75,7 @@ report/Phase2_Report.pdf          the report (4 pages)
 README.md, SCOREBOARD.md, config.yaml, requirements.txt, .env.example
 train_cpt.py, train_sft.py, score.py, src/
 notebooks/phase2.ipynb            the whole pipeline in one notebook, with outputs
-notebooks/run_on_kaggle.ipynb     runs the three scripts on Kaggle
+notebooks/run_on_kaggle.ipynb     runs the three scripts on Kaggle (run_on_kaggle_output.ipynb = our run, with outputs)
 tests/test_questions.csv          30 test cases (v2, used for scoring)
 tests/test_questions_v1_original.csv, build_test_v2.py   v1 and the v1 -> v2 changes
 data/guidelines.json, kb.json     ABCD v1.1 documents
@@ -97,5 +97,10 @@ tools/                            build_sft_pairs.py, handbook.py (+ _v1_pairs.p
 Checkpoints are not in Git. The best continued-pretraining and SFT checkpoints are on the Hugging Face Hub (private
 repositories; access on request): **[`noorattoun/abcd-smollm2-cpt`](https://huggingface.co/noorattoun/abcd-smollm2-cpt)**
 and **[`noorattoun/abcd-smollm2-sft`](https://huggingface.co/noorattoun/abcd-smollm2-sft)**. `score.py` loads them from
-there when `checkpoints/` is not present (set `HF_TOKEN`). No keys are committed: the only secret is `HF_TOKEN`
+there when `checkpoints/` is not present (set `HF_TOKEN`).
+
+The Hub checkpoints come from our run of the scripts ([`notebooks/run_on_kaggle_output.ipynb`](notebooks/run_on_kaggle_output.ipynb)).
+That run reproduced every number in the scoreboard (perplexity 14.93 / 3.28 / 4.52, accuracy 31.7% / 8.3% / 38.3%).
+53 of the 54 hand-graded answers came out word for word the same; the SFT answer to SP-22 changed wording
+("Order Received or In Transit" instead of "Out for Delivery or Delivered") and still invents an order status. No keys are committed: the only secret is `HF_TOKEN`
 (see `.env.example`), kept in Kaggle secrets or an environment variable.
